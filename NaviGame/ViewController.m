@@ -9,6 +9,7 @@
 #import "ViewController.h"
 
 @interface ViewController ()
+@property (weak, nonatomic) UIBarButtonItem *goBack;
 
 @end
 
@@ -16,9 +17,18 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    
+    UIBarButtonItem *backButton = [[UIBarButtonItem alloc]init];
+    backButton.action = @selector(backToTheStart);
+    backButton.title = @"Back to Start";
+    backButton.target = self;
+    self.navigationItem.rightBarButtonItem = backButton;
 }
 
+-(void)backToTheStart
+{
+    [self.navigationController popToRootViewControllerAnimated:YES];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
